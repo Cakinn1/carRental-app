@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.links:hover {
+  @apply transition ease-in-out duration-300 text-purple-500 cursor-pointer 
+}
+
+.btn__register {
+  @apply px-6 py-2  
+}
+
+
+.outer__cointainer {
+  @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 flex justify-center items-center
+}
+
+.inner__container {
+  @apply bg-white w-[400px] h-[500px] relative shadow-2xl rounded-md
+}
+
+.signup__title {
+  @apply font-semibold text-lg text-center
+}
+
+.height {
+  height: calc(100vh - 80px);
+}
