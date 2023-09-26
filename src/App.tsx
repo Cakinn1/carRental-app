@@ -1,11 +1,11 @@
-import React from "react";
-import {} from "@heroicons/react/24/solid";
-import Nav from "./components/Nav";
+import Nav from "./pages/Nav";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignupModal from "./components/modals/SignupModal";
-import SignInModal from "./components/modals/SignInModal";
-import Home from "./components/Home";
-import BookCar from "./components/BookCar";
+import SignupModal from "./components/ModalComponents/SignupModal";
+import SignInModal from "./components/ModalComponents/SignInModal";
+import Home from "./pages/Home";
+import Footer from "./pages/Footer";
+import About from "./pages/About";
+import HomeSaveBig from "./components/HomeComponents/HomeSaveBig";
 
 export default function App() {
   return (
@@ -15,11 +15,12 @@ export default function App() {
         <div className="pt-[80px]">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/" element={<BookCar />} />
-           </Routes>
+            <Route path="/About" element={<About />} />
+          </Routes>
         </div>
         <SignupModal signUp="Sign Up" register={true} />
         <SignInModal signUp="Sign In" register={true} />
+        <Footer />
       </Router>
     </>
   );

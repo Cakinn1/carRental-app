@@ -26,3 +26,20 @@
 .height {
   height: calc(100vh - 80px);
 }
+
+.starting-container {
+  @apply p-4 mx-auto max-w-[1200px]
+}
+
+
+
+
+.animate-button {
+  animation: animateButtonClick 1s ease-in-out 1s;
+}
+
+@keyframes animateButtonClick {
+  25% {
+    transform: rotateY('180');
+  }
+}
