@@ -11,14 +11,14 @@ export default function FooterLinksLeft() {
         We offers a big range of vehicles for all your driving needs. We have
         the perfect car to meet your needs.
       </p>
-      <div className="text-center flex flex-col mx-auto items-center md:items-start">
+      <div className="text-center flex flex-col space-y-2 mx-auto items-center md:items-start">
         <div className="gap-x-2 flex items-cent">
           <AiOutlinePhone className="text-lg text-purple-500" />
           <h1>+(123) 456 789</h1>
         </div>
         <div className="gap-x-2 flex items-center">
           <AiOutlineMail className="text-lg text-purple-500" />
-          <h1>+(123) 456 789</h1>
+          <h1>exmaple@gmail.com</h1>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ export default function About() {
 
   return (
     <>
-      <AboutMainTitle />
+      <AboutMainTitle title="About" />
       <AboutRightMain />
       <HomePlanTrip />
       <MainBlock />

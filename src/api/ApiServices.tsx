@@ -32,18 +32,20 @@ export const carData = [
 export const carDataModals = [
   {
     title: "Toyota Camry",
+    imageUrl: "toyota camry.jpg",
     rentPerDay: 25,
-    model: "Passat CC",
-    mark: "Volkswagen",
-    year: 2008,
+    model: "Camry",
+    mark: "Toyota",
+    year: 2006,
     doors: "4/5",
     ac: "Yes",
     transmission: "Automatic",
-    fuel: "Gasoline",
+    fuel: "Hybrid",
   },
   {
     title: "Vw Golf 6",
     rentPerDay: 50,
+    imageUrl: "vwgold.jpg",
     model: "Benz GLK",
     mark: "Mercedes",
     year: 2006,
@@ -55,6 +57,7 @@ export const carDataModals = [
   {
     title: "Mercedes-benz GLK",
     rentPerDay: 35,
+    imageUrl: "merc.jpg",
     model: "320",
     mark: "BMW",
     year: 2012,
@@ -66,6 +69,7 @@ export const carDataModals = [
   {
     title: "BMW 320 MordernLine",
     rentPerDay: 30,
+    imageUrl: "bmw.jpg",
     model: "Camry",
     mark: "Toyota",
     year: 2006,
@@ -77,6 +81,7 @@ export const carDataModals = [
   {
     title: "Audi A1 S-line",
     rentPerDay: 37,
+    imageUrl: "audia1.jpg",
     model: "Golf 6",
     mark: "Volkswagen",
     year: 2008,
@@ -87,6 +92,7 @@ export const carDataModals = [
   },
   {
     title: "Ford Focus",
+    imageUrl: "ford focus.png",
     rentPerDay: 45,
     model: "Audi A1",
     mark: "Audi",

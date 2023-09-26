@@ -3,11 +3,18 @@ import React from "react";
 import HomeTitle from "./HomePlanTripComponents/HomeTitle";
 import HomeTestCard from "./HomeClientTestimonialsComponent/HomeTestCard";
 
-export default function HomeClientTestimonials() {
+
+
+export interface TestimonialsProps {
+  isActive?: boolean
+}
+
+export default function HomeClientTestimonials({isActive}: TestimonialsProps) {
   return (
     <>
-      <section className="bg-[#f8f8f8] lg:mt-[135px] py-[100px]  flex justify-center items-center h-scr">
-        <div className="  starting-container space-y-12">
+      <section className={`bg-[#f8f8f8]   flex justify-center items-center ${isActive ? "" : "lg:mt-[135px] py-[100px]"} `}
+        style={isActive ? {padding: "100px 0px"} : {}}>
+        <div className="starting-container space-y-12">
           <HomeTitle
             title="Reviewed by people"
             paragraph="Client's testimonials"

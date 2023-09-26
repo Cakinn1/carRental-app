@@ -10,10 +10,18 @@ export default function Links({ model }: any) {
       <Link to="/About">
         <li className="links">About</li>
       </Link>
-      <li className="links">{model}</li>
-      <li className="links">Testimonials</li>
-      <li className="links">Our Team</li>
-      <li className="links">Contact</li>
+      <Link to="/Vechicle Models">
+        <li className="links">{model}</li>
+      </Link>
+      <Link to="/Testimonials">
+        <li className="links">Testimonials</li>
+      </Link>
+      <Link to="/OurTeam">
+        <li className="links">Our Team</li>
+      </Link>
+      <Link to="/Contact">
+        <li className="links">Contact</li>
+      </Link>
     </>
   );
 }
