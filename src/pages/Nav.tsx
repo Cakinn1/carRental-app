@@ -34,7 +34,7 @@ export default function Nav() {
       >
         <figure>
           <Link to="/">
-            <img src="/carRental2.png" className="h-full w-[160px] " alt="" />
+            <img src="carRental2.png" className="h-full w-[160px] " alt="" />
           </Link>
         </figure>
         <ul className="gap-x-4 hidden lg:flex">
