@@ -15,33 +15,13 @@ import HomeStart from "../components/HomeComponents/HomeStart";
 import HomeWhyChooseUs from "../components/HomeComponents/HomeWhyChooseUs";
 
 export default function Home() {
-  const [showScroll, setShowScroll] = useState<boolean>(false);
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY >= 600) {
-      setShowScroll(true);
-    } else {
-      setShowScroll(false);
-    }
-  });
-
-  function handleScrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      <HomeStart
-        handleScrollToTop={handleScrollToTop}
-        showScroll={showScroll}
-      />
+      <HomeStart />
       <BookCar />
       <HomePlanTrip />
       <HomeRentalFleet />

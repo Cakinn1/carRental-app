@@ -1,3 +1,4 @@
+import { PhoneIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { BsMap, BsPinMap } from "react-icons/bs";
@@ -13,7 +14,8 @@ export default function ContactMainLeft() {
         </p>
         <div className="space-y-4">
           <div className="gap-x-2 flex items-cent">
-            <AiOutlinePhone className="text-lg text-purple-500" />
+            <PhoneIcon className="h-[18px] text-purple-500" />
+
             <h1>+(123) 456 789</h1>
           </div>
           <div className="gap-x-2 flex items-center">

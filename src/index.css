@@ -43,3 +43,21 @@
     transform: rotateY('180');
   }
 }
+
+
+.custom-datepicker input {
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.custom-datepicker input[type="text"] {
+  /* Allow only numbers */
+  /* You can also use input[type="number"] to enable the number keypad on mobile devices */
+  appearance: textfield;
+}
+
+.custom-datepicker input[type="text"]::-webkit-inner-spin-button,
+.custom-datepicker input[type="text"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

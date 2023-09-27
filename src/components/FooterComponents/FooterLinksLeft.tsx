@@ -1,5 +1,5 @@
-import React from "react";
-import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import { PhoneIcon } from "@heroicons/react/24/solid";
+import { AiOutlineMail} from "react-icons/ai";
 
 export default function FooterLinksLeft() {
   return (
@@ -13,7 +13,7 @@ export default function FooterLinksLeft() {
       </p>
       <div className="text-center flex flex-col space-y-2 mx-auto items-center md:items-start">
         <div className="gap-x-2 flex items-cent">
-          <AiOutlinePhone className="text-lg text-purple-500" />
+        <PhoneIcon className="h-[18px] text-purple-500" />
           <h1>+(123) 456 789</h1>
         </div>
         <div className="gap-x-2 flex items-center">

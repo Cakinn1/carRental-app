@@ -9,7 +9,7 @@ export interface HomeRentalDataProps {
   ac: string;
   transmission: string;
   fuel: string;
-  title: string
+  title: string;
 }
 
 export default function HomeRentalData({
@@ -58,7 +58,6 @@ export default function HomeRentalData({
           <p>Fuel:</p>
           <p>{fuel}</p>
         </div>
-        {title}
       </div>
     </>
   );

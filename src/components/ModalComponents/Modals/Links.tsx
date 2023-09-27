@@ -5,22 +5,22 @@ export default function Links({ model }: any) {
   return (
     <>
       <Link to="/">
-        <li className="links">Home</li>
+        <li className="links mb-4 lg:mb-0">Home</li>
       </Link>
       <Link to="/About">
-        <li className="links">About</li>
+        <li className="links mb-4 lg:mb-0">About</li>
       </Link>
       <Link to="/Vechicle Models">
-        <li className="links">{model}</li>
+        <li className="links mb-4 lg:mb-0">{model}</li>
       </Link>
       <Link to="/Testimonials">
-        <li className="links">Testimonials</li>
+        <li className="links mb-4 lg:mb-0">Testimonials</li>
       </Link>
       <Link to="/OurTeam">
-        <li className="links">Our Team</li>
+        <li className="links mb-4 lg:mb-0">Our Team</li>
       </Link>
       <Link to="/Contact">
-        <li className="links">Contact</li>
+        <li className="links mb-4 lg:mb-0">Contact</li>
       </Link>
     </>
   );

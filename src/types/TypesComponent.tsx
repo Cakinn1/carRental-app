@@ -30,6 +30,11 @@ export type Cars = {
   icon: IconDefinition;
   showDatePicker?: boolean;
   image?: IconDefinition;
+  selectName: string
+  updateSelectedValues: (selectedName: string, selectedValue: string) => void
+  selectedValue: string
+  setSelectedValue: (value: string) => void
+  
 };
 
 export interface HomeTitleProps {

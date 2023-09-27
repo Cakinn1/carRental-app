@@ -10,8 +10,28 @@ import VehicleModels from "./pages/VehicleModels";
 import Testimonials from "./pages/Testimonials";
 import OurTeam from "./pages/OurTeam";
 import Contact from "./pages/Contact";
+import { useState } from "react";
+import HomeScrollUp from "./components/HomeComponents/HomeStartComponent/HomeScrollUp";
+import HomeInfoModal from "./components/ModalComponents/HomeInfoModal";
 
 export default function App() {
+  const [showScroll, setShowScroll] = useState<boolean>(false);
+
+  function handleScrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 600) {
+      setShowScroll(true);
+    } else {
+      setShowScroll(false);
+    }
+  });
+
   return (
     <>
       <Router>
@@ -26,6 +46,11 @@ export default function App() {
             <Route path="/Contact" element={<Contact />} />
           </Routes>
         </div>
+        <HomeScrollUp
+          showScroll={showScroll}
+          handleScrollToTop={handleScrollToTop}
+        />
+        <HomeInfoModal />
         <SignupModal signUp="Sign Up" register={true} />
         <SignInModal signUp="Sign In" register={true} />
         <Footer />
