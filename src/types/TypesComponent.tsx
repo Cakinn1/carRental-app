@@ -1,4 +1,5 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { SelectedValuesProps } from "../components/HomeComponents/BookCarComponent/HomeBookCarSelect";
 
 export type RootState = {
   auth: {
@@ -30,11 +31,8 @@ export type Cars = {
   icon: IconDefinition;
   showDatePicker?: boolean;
   image?: IconDefinition;
-  selectName: string
-  updateSelectedValues: (selectedName: string, selectedValue: string) => void
-  selectedValue: string
-  setSelectedValue: (value: string) => void
-  
+  selectName: string;
+  img?: string
 };
 
 export interface HomeTitleProps {

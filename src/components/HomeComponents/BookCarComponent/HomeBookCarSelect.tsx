@@ -11,7 +11,11 @@ import {
 } from "../../../redux/feature/signupSlice";
 import { useDispatch, useSelector } from "react-redux";
 import HomeInfoModal from "../../ModalComponents/HomeInfoModal";
-import { updateSelectedValue } from "../../../redux/feature/selectedValueSlice";
+import {
+  SelectStateValue,
+  updateSelectedValue,
+} from "../../../redux/feature/selectedValueSlice";
+import { carData } from "../../../api/ApiServices";
 
 export interface ModalState {
   modal: {
@@ -26,7 +30,7 @@ export interface SelectedValuesProps {
   value: string;
 }
 
-const defaultValues = [
+export const defaultValues = [
   { name: "select1", value: "" },
   { name: "select2", value: "" },
   { name: "select3", value: "" },
@@ -34,99 +38,84 @@ const defaultValues = [
   { name: "select5", value: "" },
 ];
 
+const pickUpDropOff = [
+  { name: "Brisbane" },
+  { name: "Gold Coast" },
+  { name: "Sydney" },
+  { name: "Melbourne" },
+];
+
 export default function HomeBookCarSelect() {
-  const [selectedValue, setSelectedValue] = useState<SelectedValuesProps[]>(defaultValues);
-
-  const modal = useSelector((state: any) => state.selectedValues);
-  console.log("Redux State:", modal);
-  const [selectedValues, setSelectedValues] =
-    useState<SelectedValuesProps[]>(defaultValues);
-
-  const updateSelectedValues = (name: string, value: string) => {
-    dispatch(updateSelectedValue({ name, value }));
-    console.log(updateSelectedValue({ name, value }));
-  };
-  console.log("Component State:", selectedValues);
+  const [isModaOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
-
-  const isOpen = useSelector(
-    (state: ModalState) => state.modal.bookCarModalOpen
+  const selectedValues = useSelector(
+    (state: SelectStateValue) => state.selectedValues.values
   );
-  console.log(selectedValues);
+  const allValuesAreNotEmpty = selectedValues.every(
+    (item) => item.value !== ""
+  );
 
-  useEffect(() => {
-    // Update the component state when Redux state changes
-    setSelectedValues(modal);
-  }, [modal]); //
-
-  const allValuesSelected = selectedValues.every((item) => item.value !== "");
   function handleDispatch() {
-    if (allValuesSelected) {
+    if (allValuesAreNotEmpty) {
       dispatch(openBookCarModal());
+      setIsModalOpen(true);
+      document.body.classList.add("modal-open");
     }
   }
+
+  function handleValues(selectName: string, value: string, img: string) {
+    dispatch(updateSelectedValue({ name: selectName, value, image: img }));
+  }
+  console.log(selectedValues);
+  console.log(pickUpDropOff[1].name);
 
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className="flex flex-wrap gap-x-4"
+      className="flex flex-wrap gap-x-4 z-2"
     >
       <Select
         placeholder="Select your car type"
-        car1="Toyota Camry"
-        car2="Ford Mustang"
-        car3="Honda CR-V"
-        car4="Tesla Model 3"
-        car5="Jeep Wrangler"
-        car6="Chevrolet Corvette"
+        car1={carData[0].title}
+        car2={carData[1].title}
+        car3={carData[2].title}
+        car4={carData[3].title}
+        car5={carData[4].title}
+        car6={carData[5].title}
         color={"#8431aa"}
         selectName="select1"
         icon={faCar}
-        selectedValue={selectedValue}
-        setSelectedValue={setSelectedValue}
-        updateSelectedValues={updateSelectedValues}
       />
       <Select
         placeholder="Pick-up"
-        car1="Brisbane"
-        car2="Gold Coast"
-        car3="Sydney"
-        car4="Melbourne"
+        car1={pickUpDropOff[0].name}
+        car2={pickUpDropOff[1].name}
+        car3={pickUpDropOff[2].name}
+        car4={pickUpDropOff[3].name}
         color={"#8431aa"}
         selectName="select2"
         icon={faLocationDot}
-        selectedValue={selectedValue}
-        setSelectedValue={setSelectedValue}
-        updateSelectedValues={updateSelectedValues}
       />
       <Select
         placeholder="Drop-off"
-        car1="Brisbane"
-        car2="Gold Coast"
-        car3="Sydney"
-        car4="Melbourne"
-        updateSelectedValues={updateSelectedValues}
+        car1={pickUpDropOff[0].name}
+        car2={pickUpDropOff[1].name}
+        car3={pickUpDropOff[2].name}
+        car4={pickUpDropOff[3].name}
         color={"#8431aa"}
         selectName="select3"
-        selectedValue={selectedValue}
-        setSelectedValue={setSelectedValue}
         icon={faLocationDot}
       />
-      <Select
+      {/* <Select
         placeholder="Pick-up"
-        car1="Toyota Camry"
-        car2="Ford Mustang"
-        car3="Honda CR-V"
-        car4="Tesla Model 3"
-        car5="Jeep Wrangler"
-        car6="Chevrolet Corvette"
+        car1={pickUpDropOff[0].name}
+        car2={pickUpDropOff[1].name}
+        car3={pickUpDropOff[2].name}
+        car4={pickUpDropOff[3].name}
         selectName="select4"
         color={"#8431aa"}
         icon={faCalendarDays}
-        selectedValue={selectedValue}
-        setSelectedValue={setSelectedValue}
-        updateSelectedValues={updateSelectedValues}
-      />
+      /> */}
       <Select
         placeholder="Drop-off"
         car1="Toyota Camry"
@@ -138,26 +127,18 @@ export default function HomeBookCarSelect() {
         color={"#8431aa"}
         selectName="select5"
         icon={faCalendarDays}
-        selectedValue={selectedValue}
-        setSelectedValue={setSelectedValue}
-        updateSelectedValues={updateSelectedValues}
         showDatePicker={true}
         image={faCalendarDays}
       />
-      <button
-        onClick={() => handleDispatch()}
-        className="bg-purple-500 z-40 text-white shadow-2xl mt-6  rounded-md md:mt-auto h-[50px] lg:w-[30%] w-full md:w-[48%]"
-      >
-        Search
-      </button>
-      {selectedValues?.map((item) => (
-        <div>
-          {item.value}
-          {item.name}
-        </div>
-      ))}
-      {!allValuesSelected && <div>da</div>}
-      {selectedValue}
+      <div className="w-full mt-6">
+
+        <button
+          onClick={() => handleDispatch()}
+          className="bg-purple-500  z-2 text-white shadow-2xl text-center  rounded-md md:mt-auto h-[50px] lg:w-[30%] w-full md:w-[48%]"
+          >
+          Search
+        </button>
+          </div>
     </form>
   );
 }

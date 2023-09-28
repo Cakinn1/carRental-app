@@ -19,7 +19,7 @@ export default function ContactMain() {
   }
 
   return (
-    <section className="starting-container flex">
+    <section className="starting-container flex z-50">
       <ContactMainLeft />
       <ContactMainRight
         handleContactButton={handleContactButton}

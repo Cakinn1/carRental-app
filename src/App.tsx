@@ -13,10 +13,14 @@ import Contact from "./pages/Contact";
 import { useState } from "react";
 import HomeScrollUp from "./components/HomeComponents/HomeStartComponent/HomeScrollUp";
 import HomeInfoModal from "./components/ModalComponents/HomeInfoModal";
+import { useSelector } from "react-redux";
+import { ModalState } from "./components/HomeComponents/BookCarComponent/HomeBookCarSelect";
 
 export default function App() {
   const [showScroll, setShowScroll] = useState<boolean>(false);
-
+  const isOpen = useSelector(
+    (state: ModalState) => state.modal.bookCarModalOpen
+  );
   function handleScrollToTop() {
     window.scrollTo({
       top: 0,
@@ -35,7 +39,7 @@ export default function App() {
   return (
     <>
       <Router>
-        <Nav />
+        {isOpen ? "" : <Nav />}
         <div className="pt-[80px]">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -46,10 +50,14 @@ export default function App() {
             <Route path="/Contact" element={<Contact />} />
           </Routes>
         </div>
-        <HomeScrollUp
-          showScroll={showScroll}
-          handleScrollToTop={handleScrollToTop}
-        />
+        {isOpen ? (
+          ""
+        ) : (
+          <HomeScrollUp
+            showScroll={showScroll}
+            handleScrollToTop={handleScrollToTop}
+          />
+        )}
         <HomeInfoModal />
         <SignupModal signUp="Sign Up" register={true} />
         <SignInModal signUp="Sign In" register={true} />

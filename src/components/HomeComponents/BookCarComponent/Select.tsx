@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedValue } from "../../../redux/feature/selectedValueSlice";
+import { carData } from "../../../api/ApiServices";
+import {
+  SelectStateValue,
+  updateSelectedValue,
+} from "../../../redux/feature/selectedValueSlice";
 import { Cars } from "../../../types/TypesComponent";
-
+import { defaultValues } from "./HomeBookCarSelect";
 export default function Select({
   placeholder,
   car1,
@@ -19,37 +23,41 @@ export default function Select({
   icon,
   showDatePicker,
   image,
+  img,
   selectName,
-  updateSelectedValues,
-  selectedValue,
-  setSelectedValue,
 }: Cars) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch(); // Get the dispatch function
-
+  const selectedValues = useSelector(
+    (state: SelectStateValue) => state.selectedValues.values
+  );
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
     if (date) {
       const formattedDate = date.toLocaleDateString();
-      dispatch(updateSelectedValue({ name: selectName, value: formattedDate })); // Dispatch the action to update the selected value
+      dispatch(updateSelectedValue({ name: selectName, value: formattedDate }));
     } else {
-      dispatch(updateSelectedValue({ name: selectName, value: "" })); // Dispatch the action to clear the selected value
+      dispatch(updateSelectedValue({ name: selectName, value: "" }));
     }
   };
 
   const handleCarChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = e.target.value;
-    setSelectedValue(selectedValue);
-    dispatch(updateSelectedValue({ name: selectName, value: selectedValue }));
-    console.log(
-      updateSelectedValue({ name: selectName, value: selectedValue })
+    const selectedImage =
+      e.target.options[e.target.selectedIndex].getAttribute("data-car-image");
+
+    dispatch(
+      updateSelectedValue({
+        name: selectName,
+        value: selectedValue,
+        image: selectedImage || "",
+      })
     );
   };
-  console.log('1231312', selectedValue)
   return (
     <>
-      <div className="mt-6 lg:w-[30%] w-full md:w-[48%] z-40">
+      <div className="mt-6 lg:w-[30%] w-full md:w-[48%]">
         <div className="flex items-center gap-x-2">
           <FontAwesomeIcon icon={icon} style={{ color: color }} />
           <p>
@@ -80,21 +88,22 @@ export default function Select({
             <select
               name="1"
               placeholder="Select your car type"
-              className="font-normal border shadow-md w-full py-3 p-4 mt-2"
+              className="font-normal border cursor-pointer shadow-md w-full py-3 p-4 mt-2"
               id=""
-              value={selectedValue}
               required
-              onChange={handleCarChange} // Call handleCarChange when the value changes
+              onChange={handleCarChange}
             >
               <option value="" disabled selected>
                 {placeholder}
               </option>
-              <option value={car1}>{car1}</option>
-              <option value={car2}>{car2}</option>
-              <option value={car3}>{car3}</option>
-              <option value={car4}>{car4}</option>
-              {car5 && <option value={car5}>{car5}</option>}
-              {car6 && <option value={car6}>{car6}</option>}
+              <option data-car-image={carData[0].imageUrl} value={car1}>
+                {car1}
+              </option>
+              <option data-car-image={carData[1].imageUrl} value={car2}>{car2}</option>
+              <option data-car-image={carData[2].imageUrl} value={car3}>{car3}</option>
+              <option data-car-image={carData[3].imageUrl} value={car4}>{car4}</option>
+              {car5 && <option data-car-image={carData[4].imageUrl}  value={car5}>{car5}</option>}
+              {car6 && <option data-car-image={carData[5].imageUrl}  value={car6}>{car6}</option>}
             </select>{" "}
           </>
         )}

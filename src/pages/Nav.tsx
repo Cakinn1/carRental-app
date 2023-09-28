@@ -26,7 +26,7 @@ export default function Nav() {
   }
 
   return (
-    <section className={`bg-white w-full fixed shadow-lg font-semibold z-50 `}>
+    <section className={`bg-white w-full fixed shadow-lg font-semibold z-10 `}>
       <div
         className={` mx-auto flex justify-between items-center h-[80px]  ${
           isActive ? "p-0 max-w-full" : "p-4 max-w-[1200px]"

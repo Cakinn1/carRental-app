@@ -1,25 +1,49 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { SelectedValuesProps } from "../../components/HomeComponents/BookCarComponent/HomeBookCarSelect";
+// selectedValuesSlice.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: SelectedValuesProps[] = [];
+export interface SelectedValue {
+  name: string;
+  value: string;
+  image?: string;
+}
+export interface SelectStateValue {
+  selectedValues: {
+    values: Array<{
+      name: string;
+      value: string;
+      image?: string;
+    }>;
+  };
+}
+
+export interface SelectedValuesState {
+  values: SelectedValue[];
+}
+
+const initialState: SelectedValuesState = {
+  values: [
+    { name: "select1", value: "", image: "" },
+    { name: "select2", value: "" },
+    { name: "select3", value: "" },
+    { name: "select5", value: "" },
+  ],
+};
 
 const selectedValuesSlice = createSlice({
   name: "selectedValues",
   initialState,
   reducers: {
-    updateSelectedValue: (state, action) => {
-      const { name, value } = action.payload;
-console.log('upodated stat with', name, value)
-    return state.map((item) =>
-        item.name === name ? { ...item, value } : item
+    updateSelectedValue: (
+      state,
+      action: PayloadAction<{ name: string; value: string, image?: string }>
+    ) => {
+      const { name, value, image } = action.payload;
+      state.values = state.values.map((item) =>
+        item.name === name ? { ...item, value, image } : item
       );
-    },
-    resetSelectedValues: (state) => {
-      return state.map((item) => ({ ...item, value: "" }));
     },
   },
 });
 
-export const { updateSelectedValue, resetSelectedValues } =
-  selectedValuesSlice.actions;
+export const { updateSelectedValue } = selectedValuesSlice.actions;
 export default selectedValuesSlice.reducer;
