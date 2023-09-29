@@ -33,11 +33,8 @@ const selectedValuesSlice = createSlice({
   name: "selectedValues",
   initialState,
   reducers: {
-    updateSelectedValue: (
-      state,
-      action: PayloadAction<{ name: string; value: string, image?: string }>
-    ) => {
-      const { name, value, image } = action.payload;
+    updateSelectedValue: (state, action: PayloadAction<SelectedValue>) => {
+      const { name, image, value } = action.payload;
       state.values = state.values.map((item) =>
         item.name === name ? { ...item, value, image } : item
       );

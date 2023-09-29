@@ -1,13 +1,10 @@
 import { useParams } from "react-router-dom";
 
-
 export interface AboutMainTitleProps {
-  title: string
+  title: string;
 }
 
-export default function AboutMainTitle({title}:AboutMainTitleProps) {
-  const {pageName} = useParams()
-  console.log({pageName})
+export default function AboutMainTitle({ title }: AboutMainTitleProps) {
   return (
     <>
       <div

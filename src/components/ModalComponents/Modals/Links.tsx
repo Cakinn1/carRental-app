@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Links({ model }: any) {
+export default function Links({ model }: {model: string}) {
   return (
     <>
       <Link to="/">
