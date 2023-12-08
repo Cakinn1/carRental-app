@@ -2,7 +2,7 @@
 
 ## Welcome 👋
 
-Welcome to car rental, a car booking website.
+Welcome to Car Rental, a car booking website.
 
 You can find the live, hosted version here → [Car Rental Live](https://car-rental-app-mu.vercel.app/)
 
