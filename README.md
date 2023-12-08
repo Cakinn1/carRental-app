@@ -23,6 +23,7 @@ Car Rental is a online car booking website created with React.js, Typescript Red
 - 6 page dynamic pages
 - Sorting via users select
 - Fully responsive
+- authentication 
 - Clean, maintainable & scalable code.
 
 ## Getting Started
